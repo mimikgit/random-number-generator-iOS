@@ -18,9 +18,11 @@ struct ContentView: View {
             // View's button with an action closure
             Button.init("GET RANDOM NUMBER") {
                 
-                // Calling the buggy synchronous method
-                randomNumber = mainActivity.generateRandomNumber()
-                
+                // Calling the fixed, new asynchronous method in a await/async wrapper
+                Task {
+                    randomNumber = await mainActivity.generateRandomNumber()
+                }
+
             }.tint(Color.blue)
             
             // Showing the current random number value on the screen
