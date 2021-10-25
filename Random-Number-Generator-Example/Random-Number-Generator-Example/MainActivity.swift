@@ -16,14 +16,14 @@ final class MainActivity: NSObject {
             }
             
             // Check for a success of the startEdgeEngine asynchronous task. Fail fatally for an error.
-            // Establish the Access Token as `let edgeEndgineAccessToken`
-            guard let edgeEndgineAccessToken = await self.authorizeEdgeEngine() else {
+            // Establish the Access Token as `let edgeEngineAccessToken`
+            guard let edgeEngineAccessToken = await self.authorizeEdgeEngine() else {
                 fatalError(#function)
             }
 
             // Check for a success of the startEdgeEngine asynchronous task. Fail fatally for an error.
             // Establish the deployed edge microservice reference as  `let microservice`
-            guard let microservice = await self.deployRandomNumberMicroservice(edgeEngineAccessToken: edgeEndgineAccessToken) else {
+            guard let microservice = await self.deployRandomNumberMicroservice(edgeEngineAccessToken: edgeEngineAccessToken) else {
                 fatalError(#function)
             }
             
@@ -92,7 +92,7 @@ final class MainActivity: NSObject {
                 self.mimikClientLibrary.authorizeWithDeveloperIdToken(developerIdToken: developerIdToken) { result in
                     
                     // Retrieving the Access Token from the result of the authorization call
-                    guard let edgeEndgineAccessToken = result.tokens?.accessToken else {
+                    guard let edgeEngineAccessToken = result.tokens?.accessToken else {
                         
                         // Resuming the closure by returning a nil. This is a failed scenario.
                         continuation.resume(returning: nil)
@@ -100,7 +100,7 @@ final class MainActivity: NSObject {
                     }
                     
                     // Resuming the closure by returning the Access Token
-                    continuation.resume(returning: edgeEndgineAccessToken)
+                    continuation.resume(returning: edgeEngineAccessToken)
                 }
                                 
             } catch {
