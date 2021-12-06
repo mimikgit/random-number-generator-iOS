@@ -1,5 +1,6 @@
 import Foundation
-import MIMIKEdgeMobileClient
+import MIMIKEdgeClient
+import MIMIKEdgeClientIdentity
 import Alamofire
 
 final class MainActivity: NSObject {
@@ -15,9 +16,15 @@ final class MainActivity: NSObject {
                 fatalError(#function)
             }
             
+            // Check for a success of the getEdgeEngineIdToken asynchronous task. Fail fatally for an error.
+            // Establish the edgeEngine ID Token as `let edgeEngineIdToken`
+            guard let edgeEngineIdToken = await self.getEdgeEngineIdToken() else {
+                fatalError(#function)
+            }
+            
             // Check for a success of the startEdgeEngine asynchronous task. Fail fatally for an error.
             // Establish the Access Token as `let edgeEngineAccessToken`
-            guard let edgeEngineAccessToken = await self.authorizeEdgeEngine() else {
+            guard let edgeEngineAccessToken = await self.authorizeEdgeEngine(edgeEngineIdToken: edgeEngineIdToken) else {
                 fatalError(#function)
             }
 
@@ -40,8 +47,8 @@ final class MainActivity: NSObject {
     // A lazy instance variable of the mimik Client Library
     // Will be initialized on first access only.
     // Will remain initialized for all subsequent calls.
-    lazy var mimikClientLibrary: MIMIKEdgeMobileClient = {
-        let library = MIMIKEdgeMobileClient.init(license: nil)
+    lazy var mimikClientLibrary: MIMIKEdgeClient = {
+        let library = MIMIKEdgeClient.init(license: nil)
         
         guard let checkedLibrary = library else {
             fatalError()
@@ -68,10 +75,26 @@ final class MainActivity: NSObject {
             }
         }
     }
+    
+    // Asynchronous method returning the ID Token that's necessary
+    // for edgeEngine Runtime authentication.
+    func getEdgeEngineIdToken() async -> String? {
+        
+        // Closure wrapper for async/await
+        return await withCheckedContinuation { continuation in
+            
+            // Starting the edgeEngine Runtime with default startup parameters
+            self.mimikClientLibrary.edgeEngineIdToken() { result in
+                
+                // Resuming the closure by returning the result value
+                continuation.resume(returning: (result))
+            }
+        }
+    }
 
     // Asynchronous method returning the Access Token that's necessary to work
     // with the edge microservice running under the edgeEngine Runtime
-    func authorizeEdgeEngine() async -> String? {
+    func authorizeEdgeEngine(edgeEngineIdToken: String) async -> String? {
         
         // Closure wrapper for async/await
         return await withCheckedContinuation { continuation in
@@ -88,8 +111,8 @@ final class MainActivity: NSObject {
                 // Loading the content of Developer-Token file as a String
                 let developerIdToken = try String(contentsOfFile: developerIdTokenFile).replacingOccurrences(of: "\n", with: "")
                 
-                // Authorizing edgeEngine Runtime. Passing the content of Developer-Token file
-                self.mimikClientLibrary.authorizeWithDeveloperIdToken(developerIdToken: developerIdToken) { result in
+                // Authorizing edgeEngine Runtime. Passing the content of Developer-Token file and edgeEngine ID Token
+                self.mimikClientLibrary.authorizeWithDeveloperIdToken(developerIdToken: developerIdToken, edgeEngineIdToken: edgeEngineIdToken) { result in
                     
                     // Retrieving the Access Token from the result of the authorization call
                     guard let edgeEngineAccessToken = result.tokens?.accessToken else {
