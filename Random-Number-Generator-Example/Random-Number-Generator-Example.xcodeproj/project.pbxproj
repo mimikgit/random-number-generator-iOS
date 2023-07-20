@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		31817D13270F788E00962DDE /* Developer-Token in Resources */ = {isa = PBXBuildFile; fileRef = 31817D12270F788E00962DDE /* Developer-Token */; };
+		315201372A69AD59006661DB /* edgeEngine-License in Resources */ = {isa = PBXBuildFile; fileRef = 315201362A69AD59006661DB /* edgeEngine-License */; };
+		31817D13270F788E00962DDE /* Developer-ID-Token in Resources */ = {isa = PBXBuildFile; fileRef = 31817D12270F788E00962DDE /* Developer-ID-Token */; };
 		319ECA6B270BA59900A5E19C /* Random_Number_Generator_ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319ECA6A270BA59900A5E19C /* Random_Number_Generator_ExampleApp.swift */; };
 		319ECA6D270BA59900A5E19C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319ECA6C270BA59900A5E19C /* ContentView.swift */; };
 		319ECA6F270BA59A00A5E19C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 319ECA6E270BA59A00A5E19C /* Assets.xcassets */; };
@@ -17,7 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		31817D12270F788E00962DDE /* Developer-Token */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Developer-Token"; sourceTree = SOURCE_ROOT; };
+		315201362A69AD59006661DB /* edgeEngine-License */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "edgeEngine-License"; sourceTree = SOURCE_ROOT; };
+		31817D12270F788E00962DDE /* Developer-ID-Token */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Developer-ID-Token"; sourceTree = SOURCE_ROOT; };
 		319ECA67270BA59900A5E19C /* Random-Number-Generator-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random-Number-Generator-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		319ECA6A270BA59900A5E19C /* Random_Number_Generator_ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random_Number_Generator_ExampleApp.swift; sourceTree = "<group>"; };
 		319ECA6C270BA59900A5E19C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,7 +63,8 @@
 				319ECA6C270BA59900A5E19C /* ContentView.swift */,
 				319ECA6A270BA59900A5E19C /* Random_Number_Generator_ExampleApp.swift */,
 				319ECA6E270BA59A00A5E19C /* Assets.xcassets */,
-				31817D12270F788E00962DDE /* Developer-Token */,
+				31817D12270F788E00962DDE /* Developer-ID-Token */,
+				315201362A69AD59006661DB /* edgeEngine-License */,
 				31F9D82E2717841900FB34FA /* randomnumber_v1.tar */,
 				319ECA70270BA59A00A5E19C /* Preview Content */,
 			);
@@ -135,7 +138,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				31F9D82F2717841900FB34FA /* randomnumber_v1.tar in Resources */,
-				31817D13270F788E00962DDE /* Developer-Token in Resources */,
+				31817D13270F788E00962DDE /* Developer-ID-Token in Resources */,
+				315201372A69AD59006661DB /* edgeEngine-License in Resources */,
 				319ECA72270BA59A00A5E19C /* Preview Assets.xcassets in Resources */,
 				319ECA6F270BA59A00A5E19C /* Assets.xcassets in Resources */,
 			);
