@@ -1,0 +1,46 @@
+PODS:
+  - Alamofire (5.7.1)
+  - AppAuth (1.6.2):
+    - AppAuth/Core (= 1.6.2)
+    - AppAuth/ExternalUserAgent (= 1.6.2)
+  - AppAuth/Core (1.6.2)
+  - AppAuth/ExternalUserAgent (1.6.2):
+    - AppAuth/Core
+  - JWTDecode (3.0.1)
+  - MIMIKEdgeClientCore (14.0.1):
+    - Alamofire (~> 5.7.1)
+    - AppAuth (~> 1.6.2)
+    - JWTDecode (~> 3.0.1)
+    - SwiftyJSON (~> 5.0.1)
+  - MIMIKEdgeClientEngine (14.0.0):
+    - Alamofire (~> 5.7.1)
+    - JWTDecode (~> 3.0.1)
+    - MIMIKEdgeClientCore (~> 14.0.0)
+    - SwiftyJSON (~> 5.0.1)
+  - SwiftyJSON (5.0.1)
+
+DEPENDENCIES:
+  - MIMIKEdgeClientCore
+  - MIMIKEdgeClientEngine
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - AppAuth
+    - JWTDecode
+    - SwiftyJSON
+  https://github.com/mimikgit/cocoapod-edge-specs.git:
+    - MIMIKEdgeClientCore
+    - MIMIKEdgeClientEngine
+
+SPEC CHECKSUMS:
+  Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
+  AppAuth: 3bb1d1cd9340bd09f5ed189fb00b1cc28e1e8570
+  JWTDecode: 2eed97c2fa46ccaf3049a787004eedf0be474a87
+  MIMIKEdgeClientCore: 61446cda3010120d8af3ce0bc5ea94653e0edef8
+  MIMIKEdgeClientEngine: 11d704f206ee5c1102916b106906515a55a3992d
+  SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
+
+PODFILE CHECKSUM: efbee597e37aceb63164d0ca92a52d61d59e61d6
+
+COCOAPODS: 1.12.1

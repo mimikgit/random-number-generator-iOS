@@ -7,18 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A128666E451604628BFB4AB /* Pods_Random_Number_Generator_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD0B8774C94AC53B519E642 /* Pods_Random_Number_Generator_Example.framework */; };
-		31817D13270F788E00962DDE /* Developer-Token in Resources */ = {isa = PBXBuildFile; fileRef = 31817D12270F788E00962DDE /* Developer-Token */; };
+		315201372A69AD59006661DB /* edgeEngine-License in Resources */ = {isa = PBXBuildFile; fileRef = 315201362A69AD59006661DB /* edgeEngine-License */; };
+		31817D13270F788E00962DDE /* Developer-ID-Token in Resources */ = {isa = PBXBuildFile; fileRef = 31817D12270F788E00962DDE /* Developer-ID-Token */; };
 		319ECA6B270BA59900A5E19C /* Random_Number_Generator_ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319ECA6A270BA59900A5E19C /* Random_Number_Generator_ExampleApp.swift */; };
 		319ECA6D270BA59900A5E19C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319ECA6C270BA59900A5E19C /* ContentView.swift */; };
 		319ECA6F270BA59A00A5E19C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 319ECA6E270BA59A00A5E19C /* Assets.xcassets */; };
 		319ECA72270BA59A00A5E19C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 319ECA71270BA59A00A5E19C /* Preview Assets.xcassets */; };
 		31DCC23C270F881900CBFC6F /* MainActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DCC23B270F881900CBFC6F /* MainActivity.swift */; };
 		31F9D82F2717841900FB34FA /* randomnumber_v1.tar in Resources */ = {isa = PBXBuildFile; fileRef = 31F9D82E2717841900FB34FA /* randomnumber_v1.tar */; };
+		D6CBDEE9B56E278D36217ED8 /* Pods_Random_Number_Generator_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DC51F3467FB07F4E745B55 /* Pods_Random_Number_Generator_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		31817D12270F788E00962DDE /* Developer-Token */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Developer-Token"; sourceTree = SOURCE_ROOT; };
+		315201362A69AD59006661DB /* edgeEngine-License */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "edgeEngine-License"; sourceTree = SOURCE_ROOT; };
+		31817D12270F788E00962DDE /* Developer-ID-Token */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Developer-ID-Token"; sourceTree = SOURCE_ROOT; };
 		319ECA67270BA59900A5E19C /* Random-Number-Generator-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random-Number-Generator-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		319ECA6A270BA59900A5E19C /* Random_Number_Generator_ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random_Number_Generator_ExampleApp.swift; sourceTree = "<group>"; };
 		319ECA6C270BA59900A5E19C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,9 +28,9 @@
 		319ECA71270BA59A00A5E19C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		31DCC23B270F881900CBFC6F /* MainActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainActivity.swift; sourceTree = "<group>"; };
 		31F9D82E2717841900FB34FA /* randomnumber_v1.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = randomnumber_v1.tar; sourceTree = SOURCE_ROOT; };
-		4DD0B8774C94AC53B519E642 /* Pods_Random_Number_Generator_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Random_Number_Generator_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C0C2E7523AE88FA6970ED75 /* Pods-Random-Number-Generator-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Random-Number-Generator-Example.debug.xcconfig"; path = "Target Support Files/Pods-Random-Number-Generator-Example/Pods-Random-Number-Generator-Example.debug.xcconfig"; sourceTree = "<group>"; };
-		F1A84F85C0B454C70AC6DD53 /* Pods-Random-Number-Generator-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Random-Number-Generator-Example.release.xcconfig"; path = "Target Support Files/Pods-Random-Number-Generator-Example/Pods-Random-Number-Generator-Example.release.xcconfig"; sourceTree = "<group>"; };
+		6772D2F4A89455056F707784 /* Pods-Random-Number-Generator-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Random-Number-Generator-Example.debug.xcconfig"; path = "Target Support Files/Pods-Random-Number-Generator-Example/Pods-Random-Number-Generator-Example.debug.xcconfig"; sourceTree = "<group>"; };
+		F660DD9E02960542A1E7D4DC /* Pods-Random-Number-Generator-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Random-Number-Generator-Example.release.xcconfig"; path = "Target Support Files/Pods-Random-Number-Generator-Example/Pods-Random-Number-Generator-Example.release.xcconfig"; sourceTree = "<group>"; };
+		F9DC51F3467FB07F4E745B55 /* Pods_Random_Number_Generator_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Random_Number_Generator_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,20 +38,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A128666E451604628BFB4AB /* Pods_Random_Number_Generator_Example.framework in Frameworks */,
+				D6CBDEE9B56E278D36217ED8 /* Pods_Random_Number_Generator_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05509B7144E64E7989A539B1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F9DC51F3467FB07F4E745B55 /* Pods_Random_Number_Generator_Example.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		319ECA5E270BA59900A5E19C = {
 			isa = PBXGroup;
 			children = (
 				319ECA69270BA59900A5E19C /* Random-Number-Generator-Example */,
 				319ECA68270BA59900A5E19C /* Products */,
-				B633AAE726F31E0151AFE8AD /* Pods */,
-				53535FBB757BE7A79E8D312C /* Frameworks */,
+				66B86ECA97F0A28BFD8A62FD /* Pods */,
+				05509B7144E64E7989A539B1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,7 +78,8 @@
 				319ECA6C270BA59900A5E19C /* ContentView.swift */,
 				319ECA6A270BA59900A5E19C /* Random_Number_Generator_ExampleApp.swift */,
 				319ECA6E270BA59A00A5E19C /* Assets.xcassets */,
-				31817D12270F788E00962DDE /* Developer-Token */,
+				31817D12270F788E00962DDE /* Developer-ID-Token */,
+				315201362A69AD59006661DB /* edgeEngine-License */,
 				31F9D82E2717841900FB34FA /* randomnumber_v1.tar */,
 				319ECA70270BA59A00A5E19C /* Preview Content */,
 			);
@@ -83,19 +94,11 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		53535FBB757BE7A79E8D312C /* Frameworks */ = {
+		66B86ECA97F0A28BFD8A62FD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				4DD0B8774C94AC53B519E642 /* Pods_Random_Number_Generator_Example.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B633AAE726F31E0151AFE8AD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				8C0C2E7523AE88FA6970ED75 /* Pods-Random-Number-Generator-Example.debug.xcconfig */,
-				F1A84F85C0B454C70AC6DD53 /* Pods-Random-Number-Generator-Example.release.xcconfig */,
+				6772D2F4A89455056F707784 /* Pods-Random-Number-Generator-Example.debug.xcconfig */,
+				F660DD9E02960542A1E7D4DC /* Pods-Random-Number-Generator-Example.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
@@ -108,11 +111,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 319ECA75270BA59A00A5E19C /* Build configuration list for PBXNativeTarget "Random-Number-Generator-Example" */;
 			buildPhases = (
-				30249B6D729526BD6D78B2C0 /* [CP] Check Pods Manifest.lock */,
+				34B9A982A0C71742CB8C49E8 /* [CP] Check Pods Manifest.lock */,
 				319ECA63270BA59900A5E19C /* Sources */,
 				319ECA64270BA59900A5E19C /* Frameworks */,
 				319ECA65270BA59900A5E19C /* Resources */,
-				6617D825B9E46F739CF7ABEC /* [CP] Embed Pods Frameworks */,
+				C364A975B100026FBD02E479 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -162,7 +165,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				31F9D82F2717841900FB34FA /* randomnumber_v1.tar in Resources */,
-				31817D13270F788E00962DDE /* Developer-Token in Resources */,
+				31817D13270F788E00962DDE /* Developer-ID-Token in Resources */,
+				315201372A69AD59006661DB /* edgeEngine-License in Resources */,
 				319ECA72270BA59A00A5E19C /* Preview Assets.xcassets in Resources */,
 				319ECA6F270BA59A00A5E19C /* Assets.xcassets in Resources */,
 			);
@@ -171,7 +175,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		30249B6D729526BD6D78B2C0 /* [CP] Check Pods Manifest.lock */ = {
+		34B9A982A0C71742CB8C49E8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -193,7 +197,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6617D825B9E46F739CF7ABEC /* [CP] Embed Pods Frameworks */ = {
+		C364A975B100026FBD02E479 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -344,7 +348,7 @@
 		};
 		319ECA76270BA59A00A5E19C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8C0C2E7523AE88FA6970ED75 /* Pods-Random-Number-Generator-Example.debug.xcconfig */;
+			baseConfigurationReference = 6772D2F4A89455056F707784 /* Pods-Random-Number-Generator-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -375,7 +379,7 @@
 		};
 		319ECA77270BA59A00A5E19C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F1A84F85C0B454C70AC6DD53 /* Pods-Random-Number-Generator-Example.release.xcconfig */;
+			baseConfigurationReference = F660DD9E02960542A1E7D4DC /* Pods-Random-Number-Generator-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

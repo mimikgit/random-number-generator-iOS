@@ -11,7 +11,7 @@ To clone the code to your local machine, execute the following command:
 
 # Using the project with the edge microservice tutorial
 
-This project is intended to be the demonstration code that accompanies the online tutorial *Creating a Simple iOS Application that Uses an edge microservice*. You can find the tutorial [here](http://TO_BE_PROVIDED.com).
+This project is intended to be the demonstration code that accompanies the online tutorial *Creating a Simple iOS Application that Uses an edge microservice*. You can find the tutorial [here](https://devdocs.mimik.com/tutorials/08-index).
 
 This project is structured as a scenario that shows you how to fix a bug in the code by using an edge microservice to solve the problem. The bug is that the code is supposed to generate a random number each time a button on the screen of the iOS device is tapped. But, it doesn't. The same number keeps appearing. However, this project does have code that provides a fix.
 
@@ -31,11 +31,8 @@ If you want see the fixed code locally, checkout the `completed_code` branch usi
 
 # Getting the code up and running
 
-**BE ADVISED:** In order to run this code you need to have an active project registered with mimik.com.
+**BE ADVISED:** In order to run this code you need to have an active edge project registered at the mimik developer portal.
 
-You can create and register a project in the mimik Developer Console website [here](https://developer.mimik.com/console). **There is no charge for creating a mimik project. It's absolutely free!**
+You can create and register an edge project at the mimik Developer Portal console [here](https://developer.mimik.com/console). **There is no charge for creating a mimik edge project. It's absolutely free!**
 
 You'll configure the application using the various tokens generated from within a mimik Developer Console.
-
-As mentioned above, to get the most benefit from this project, it's best to follow along with the instructions provided in the tutorial [here](http://TO_BE_PROVIDED.com).
-

@@ -6,7 +6,7 @@ struct ContentView: View {
     @State private var randomNumber: Int = 0
     // View's MainActivity class instance variable
     @State private var mainActivity = MainActivity()
-
+    
     // View's body
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
@@ -14,15 +14,15 @@ struct ContentView: View {
             // View's title text
             Text("mimik Random Number Generator")
                 .font(.title2)
-
+            
             // View's button with an action closure
             Button.init("GET RANDOM NUMBER") {
                 
-                // Calling the fixed, new asynchronous method in a await/async wrapper
                 Task {
+                    // Calling the repaired asynchronous method
                     randomNumber = await mainActivity.generateRandomNumber()
                 }
-
+                
             }.tint(Color.blue)
             
             // Showing the current random number value on the screen
