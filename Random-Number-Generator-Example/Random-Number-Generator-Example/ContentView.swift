@@ -2,25 +2,25 @@ import SwiftUI
 
 struct ContentView: View {
     
-    // View's random number value instance variable
     @State private var randomNumber: Int = 0
-    // View's MainActivity class instance variable
     @State private var mainActivity = MainActivity()
     
-    // View's body
     var body: some View {
         VStack(alignment: .center, spacing: 30) {
             
-            // View's title text
             Text("mimik Random Number Generator")
                 .font(.title2)
             
-            // View's button with an action closure
             Button.init("GET RANDOM NUMBER") {
                 
                 Task {
                     // Calling the repaired asynchronous method
-                    randomNumber = await mainActivity.generateRandomNumber()
+                    guard case let .success(generatedNumber) = await mainActivity.generateRandomNumberNew() else {
+                        return
+                    }
+                    
+                    // Setting the view's new random number
+                    randomNumber = generatedNumber
                 }
                 
             }.tint(Color.blue)

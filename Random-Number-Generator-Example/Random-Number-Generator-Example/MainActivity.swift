@@ -1,6 +1,6 @@
 import Foundation
-import MIMIKEdgeClientCore
-import MIMIKEdgeClientEngine
+import EdgeCore
+import EdgeEngine
 import Alamofire
 
 final class MainActivity: NSObject {
@@ -9,146 +9,137 @@ final class MainActivity: NSObject {
         super.init()
         
         Task {
-            // Start edgeEngine Runtime. Fail for an error.
-            guard await self.startEdgeEngine() else {
-                fatalError(#function)
+            // Starting edgeEngine Runtime.
+            guard case .success = await self.startEdgeEngine() else {
+                return
             }
             
-            // Generate edgeEngine Access Token. Fail for an error.
-            guard let edgeEngineAccessToken = await self.accessToken() else {
-                fatalError(#function)
+            // Generating Access Token.
+            guard case let .success(edgeEngineAccessToken) = await self.accessToken() else {
+                return
             }
 
-            // Deploy Random Number edge microservice. Fail for an error.
-            guard let microservice = await self.deployRandomNumberMicroservice(edgeEngineAccessToken: edgeEngineAccessToken) else {
-                fatalError(#function)
+            // Deploying Random Number edge microservice.
+            guard case .success = await self.deployRandomNumberMicroservice(edgeEngineAccessToken: edgeEngineAccessToken) else {
+                return
             }
         }
     }
-    
-    // Synchronous method that was supposed to return a randomly generated number
+
+    // Buggy synchronous method that always returns the same number
     func generateRandomNumber() -> Int {
         return 60
     }
     
-    // mimik Client Library Core component instance
-    let edgeClient: MIMIKEdgeClient = {
-        return MIMIKEdgeClient()
-    }()
-
-    // mimik Client Library Engine component instance
-    let edgeEngine: MIMIKEdgeClientEdgeEngine = {
-        guard let mimikEdgeEngine = MIMIKEdgeClientEdgeEngine() else {
-            fatalError(#function)
-        }
-        return mimikEdgeEngine
+    // mimik Client Library instance
+    let edgeClient: EdgeClient = {
+        return EdgeClient()
     }()
     
-    // Starting the edgeEngine Runtime
-    func startEdgeEngine() async -> Bool {
+    // Asynchronous method returning the success or failure of edgeEngine Runtime startup
+    func startEdgeEngine() async -> Result<Void, NSError> {
         
-        // Loading the content of edgeEngine-License file as a String
-        guard let file = Bundle.main.path(forResource: "edgeEngine-License", ofType: nil), let license = try? String(contentsOfFile: file).replacingOccurrences(of: "\n", with: "") else {
-            print("Error")
-            return false
+        // Loading the content of the Developer-edge-License file as a String
+        guard let file = Bundle.main.path(forResource: "Developer-edge-License", ofType: nil), let license = try? String(contentsOfFile: file).replacingOccurrences(of: "\n", with: "") else {
+            print(#function, #line, "Error")
+            return .failure(NSError(domain: "Developer-edge-License Error", code: 500))
         }
         
-        // License parameter is the only parameter required for edgeEngine Runtime startup. Other parameters are not shown by default
-        let params = MIMIKStartupParameters.init(license: license)
+        // License parameter is the only parameter required for edgeEngine Runtime startup. There are other optional parameters also available.
+        let params = EdgeClient.StartupParameters(license: license)
         
-        // Using the mimik Client Library Engine component's method to start the edgeEngine Runtime
-        switch await self.edgeEngine.startEdgeEngine(startupParameters: params) {
+        // Using the mimik Client Library to start the edgeEngine Runtime
+        switch await self.edgeClient.startEdgeEngine(parameters: params) {
         case .success:
-            return true
+            print(#function, #line, "Success")
+            return .success(())
         case .failure(let error):
-            print("Error", error.localizedDescription)
-            return false
+            print(#function, #line, "Error", error.localizedDescription)
+            return .failure(error)
         }
     }
 
-    // Generates Access Token that's necessary to work with edge microservices
-    func accessToken() async -> String? {
+    // Asynchronous method returning the success or failure of generating an Access Token
+    func accessToken() async -> Result<String, NSError> {
         
         // Loading the content of Developer-ID-Token file as a String
         guard let developerIdTokenFile = Bundle.main.path(forResource: "Developer-ID-Token", ofType: nil), let developerIdToken = try? String(contentsOfFile: developerIdTokenFile).replacingOccurrences(of: "\n", with: "") else {
-            print("Error")
-            return nil
+            print(#function, #line, "Error")
+            return .failure(NSError(domain: "Developer-ID-Token Error", code: 500))
         }
         
-        // Using the mimik Client Library method to get the edgeEngine Access Token. Passing in the Developer ID Token as a parameter
-        switch await self.edgeClient.authenticateDeveloperAccess(developerIdToken: developerIdToken) {
+        // Calling mimik Client Library to generate the edgeEngine Access Token. Passing-in the Developer ID Token as a parameter.
+        switch await self.edgeClient.authorizeDeveloper(developerIdToken: developerIdToken) {
         case .success(let authorization):
                             
-            guard let accessToken = authorization.userAccessToken() else {
-                print("Error")
-                return nil
+            guard let accessToken = authorization.token?.accessToken else {
+                print(#function, #line, "Error")
+                return .failure(NSError(domain: "Access Token Error", code: 500))
             }
             
-            print("Success. Access Token:", accessToken)
+            print(#function, #line, "Success", accessToken)
+            return .success(accessToken)
             
-            // Returning edgeEngine Access Token
-            return accessToken
         case .failure(let error):
-            print("Error", error.localizedDescription)
-            return nil
+            print(#function, #line, "Error", error.localizedDescription)
+            return .failure(error)
         }
     }
 
-    // Deploys and returns an edge microservice under the edgeEngine Runtime. Requires Access Token
-    func deployRandomNumberMicroservice(edgeEngineAccessToken: String) async -> MIMIKMicroservice? {
+    // Asynchronous method returning the success or failure of deploying an edge microservice
+    func deployRandomNumberMicroservice(edgeEngineAccessToken: String) async -> Result<EdgeClient.Microservice, NSError> {
 
-        // Establishing application bundle reference to the randomnumber_v1.tar file
+        // Establishing application's bundle reference to the randomnumber_v1.tar file
         guard let imageTarPath = Bundle.main.path(forResource: "randomnumber_v1", ofType: "tar") else {
-            return nil
+            print(#function, #line, "Error")
+            return .failure(NSError(domain: "Tar file Error", code: 500))
         }
         
-        // Setting up the deployment configuration object with hardcoded values for simplicity
-        let config = MIMIKMicroserviceConfig.init(imageName: "randomnumber-v1", containerName: "randomnumber-v1", baseApiPath: "/randomnumber/v1", envVariables: [:])
+        // Setting up the edge microservice deployment configuration
+        let config = EdgeClient.Microservice.Config(imageName: "randomnumber-v1", containerName: "randomnumber-v1", basePath: "/randomnumber/v1", envVariables: [:])
         
         // Using the mimik Client Library method to deploy the edge microservice
         switch await self.edgeClient.deployMicroservice(edgeEngineAccessToken: edgeEngineAccessToken, config: config, imageTarPath: imageTarPath) {
         case .success(let microservice):
-            print("Success")
-            return microservice
+            print(#function, #line, "Success", microservice)
+            return .success(microservice)
         case .failure(let error):
-            print("Error", error.localizedDescription)
-            return nil
+            print(#function, #line, "Error", error.localizedDescription)
+            return .failure(error)
         }
     }
 
-    // Returns a randomly generated number from the edge microservice
-    func generateRandomNumber() async -> Int {
+    // New asynchronous method returning a randomly generated number
+    func generateRandomNumberNew() async -> Result<Int, NSError> {
         
         // Getting the Access Token ready
-        guard let edgeEngineAccessToken = await self.accessToken() else {
+        guard case let .success(edgeEngineAccessToken) = await self.accessToken() else {
             // Returning zero. This is a failed scenario.
-            print("Error")
-            return 0
+            print(#function, #line, "Error")
+            return .failure(NSError(domain: "Access Token Error", code: 500))
         }
         
         // Getting a reference to the deployed edge microservice
         guard case let .success(microservices) = await self.edgeClient.deployedMicroservices(edgeEngineAccessToken: edgeEngineAccessToken), let microservice = microservices.first else {
-            // Returning zero. This is a failed scenario.
-            print("Error")
-            return 0
+            print(#function, #line, "Error")
+            return .failure(NSError(domain: "Deployment Error", code: 500))
         }
         
-        // Establishing the edge microservice endpoint URL
-        guard let endpointUrlComponents = microservice.urlComponents(withEndpoint: "/randomNumber"), let endpointUrl = endpointUrlComponents.url else {
+        // Establishing the edge microservice endpoint full path URL
+        guard let endpointUrlComponents = microservice.fullPathUrl(withEndpoint: "/randomNumber"), let endpointUrl = endpointUrlComponents.url else {
             // Returning zero. This is a failed scenario.
-            print("Error")
-            return 0
+            print(#function, #line, "Error")
+            return .failure(NSError(domain: "Microservice Error", code: 500))
         }
         
-        // Alamofire request call to the endpoint's URL
+        // Calling the edge microservice endpoint using the Alamofire networking library.
         let dataTask = AF.request(endpointUrl).serializingDecodable(Int.self)
         guard let value = try? await dataTask.value else {
-            print("Error")
-            return 0
+            print(#function, #line, "Error")
+            return .failure(NSError(domain: "Decoding Error", code: 500))
         }
         
-        print("Success. Random number:", value)
-        // Returning the received random number
-        return value
+        print(#function, #line, "Success", value)
+        return .success(value)
     }
 }

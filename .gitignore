@@ -61,5 +61,4 @@ fastlane/test_output
 build_dstroot*
 build_symroot*
 # ignoring since we want to manage Podfile and podspec files in the Config directory. And copy a relevant version of the file from there.
-MIMIKEdgeClient.podspec
-Podfile
+Podfile.lock
