@@ -25,9 +25,13 @@ You might want to take a look at the buggy project in the `main` branch first, t
 
 Then, if you want to see the bug free code in the `completed_code` branch go [here](https://github.com/mimikgit/random-number-generator-iOS/tree/completed_code).
 
-If you want see the fixed code locally, checkout the `completed_code` branch using the following command:
+If you want see the fixed code locally, checkout the `completed_code` branch using the following steps:
 
-`git checkout completed_code`
+* `git checkout completed_code`
+
+* cd to the project directory where the `Podfile` file is.
+
+* `pod install --repo-update`
 
 # Getting the code up and running
 
