@@ -29,7 +29,7 @@ If you want see the fixed code locally, checkout the `completed_code` branch usi
 
 * `git checkout completed_code`
 
-* cd to the project directory
+* cd to the project directory where the `Podfile` file is.
 
 * `pod install --repo-update`
 
