@@ -6,7 +6,7 @@ final class MainActivity: NSObject {
         super.init()
     }
 
-    // Synchronous method that was supposed to return a randomly generated number
+    // Buggy synchronous method that always returns the same number
     func generateRandomNumber() -> Int {
         return 60
     }

@@ -4,6 +4,7 @@ source 'https://github.com/mimikgit/cocoapod-edge-specs.git'
 
 target 'Random-Number-Generator-Example' do
   use_frameworks!
+  inhibit_all_warnings!
   pod 'EdgeCore'
   pod 'EdgeEngineDeveloper'
 end
