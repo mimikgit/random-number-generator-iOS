@@ -1,10 +1,3 @@
----
-title: "Creating a Simple iOS Application that Uses an edge microservice"
-metaTitle: "Creating a Simple iOS Application that Uses an edge microservice"
-metaDescription: "Creating a Simple iOS Application that Uses an edge microservice"
-seo: "mimik, edge, mimOE, tutorial, microservice, software development, deployment, iOS, iPadOS, iPhone, automation, cell phone"
----
-
 # Objective
 
 The objective of this tutorial is to demonstrate how to modify a small iOS application to use a microservice at the edge. The application code will use the mimik Client Library to access an edge microservice that generates a random number on demand.
@@ -41,15 +34,9 @@ Also, be advised that the example application source that you'll clone from GitH
 
 # Technical Prerequisites
 
-In order to get full benefit from this article, the reader should have a working knowledge of the following concepts and techniques:
+Connect a **real iOS device** to your computer and select it as the target in  Xcode.
 
-- A device running the latest iOS version.
-- A familiarity of working with mimik Client Library components as described in [this Key Concepts article](../../key-concepts/09-index).
-- An understanding of the mimik Client Library components integration and initializiation process as layed out in [this article](11-index).
-- An understanding of how to [start](../tutorials/12-index#startingedgeengine) the mimOE Runtime in an iOS application.
-- An understanding of how to generate a mimOE [Access Token](../tutorials/12-index#creatinganaccesstoken).
-
-|**NOTE:** <br/><br/>Working with the iOS Simulator and the mimik Client Libraries entails some special consideration. For more more information about iOS Simulator support see [this tutorial](../tutorials/12-index#workingwithaniossimulator).|
+|**NOTE:** <br/><br/>Working with the iOS Simulator and the mimik Client Libraries entails some special consideration. For more more information about iOS Simulator support see [this tutorial](https://devdocs.mimik.com/tutorials/12-index#workingwithaniossimulator).|
 |----------|
 
 # Working with the Example Application and the mimik Client Library
@@ -105,7 +92,7 @@ open Developer-mimOE-License
 
 Go to the mimik Developer Portal and copy the Developer mimOE License from there. 
 
-Learn more about the process by reading this the tutorial [Getting the edgeEngine license and Identity server values from mimik Developer Portal](./02-index)
+Learn more about the process by reading this the [tutorial](https://devdocs.mimik.com/tutorials/02-index)
 
 Once copied, paste the mimOE License into the `Developer-mimOE-License` file, replacing any existing content already there. Save and Close the file.
 
@@ -117,11 +104,6 @@ open Random-Number-Generator-Example.xcworkspace
 ```
 
 Figure 2 below shows the command line instructions described previously, from `Steps 1-5`.
-
-| ![code in Xcode](../images/tutorials/iOS-01/iOS-command-line-output.png) |
-|-----|
-|**Figure 2:**  Command line output example for `Steps 1-5`|
-
 
 Now that references and configurations have been set, it's time to get into the business of programming to the microservice at the edge.
 
@@ -544,10 +526,6 @@ If for some reason you can't get your code up and running, you can use the worki
 * `pod install --repo-update`
 
 Additionally don't forget to save your Developer ID Token to the `Developer-ID-Token` and edge developer License to `Developer-mimOE-License` there as well. Then open the project in Xcode. Then, build and run the code on the attached iOS device.
-
-| ![after-deployment](../images/tutorials/iOS-01/iOS-random-number-working.png)|
-|----|
-|**Figure 4:** The example application with the working randomization code from the  microservice at the edge |
 
 **Congratulations!** You have completed the example application that uses a microservice at the edge to provide behavior to fix the operational bug in an application. Remember, the application was unable to display a random number each time the **Get Random Number** button was tapped. Now by binding the button tap handler to make a call to the edge microservice, it does.
 
