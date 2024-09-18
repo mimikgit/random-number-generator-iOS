@@ -9,18 +9,18 @@ final class MainActivity: NSObject {
         super.init()
         
         Task {
-            // Starting edgeEngine Runtime.
-            guard case .success = await self.startEdgeEngine() else {
+            // Starting mimOE Runtime.
+            guard case .success = await self.start() else {
                 return
             }
             
             // Generating Access Token.
-            guard case let .success(edgeEngineAccessToken) = await self.accessToken() else {
+            guard case let .success(accessToken) = await self.accessToken() else {
                 return
             }
 
             // Deploying Random Number edge microservice.
-            guard case .success = await self.deployRandomNumberMicroservice(edgeEngineAccessToken: edgeEngineAccessToken) else {
+            guard case .success = await self.deployMicroservice(accessToken: accessToken) else {
                 return
             }
         }
@@ -37,18 +37,18 @@ final class MainActivity: NSObject {
     }()
     
     // Asynchronous method returning the success or failure of edgeEngine Runtime startup
-    func startEdgeEngine() async -> Result<Void, NSError> {
+    func start() async -> Result<Void, NSError> {
         
-        // Loading the content of the Developer-edge-License file as a String
-        guard let file = Bundle.main.path(forResource: "Developer-edge-License", ofType: nil), let license = try? String(contentsOfFile: file).replacingOccurrences(of: "\n", with: "") else {
+        // Loading the content of the Developer-mimOE-License file as a String
+        guard let file = Bundle.main.path(forResource: "Developer-mimOE-License", ofType: nil), let license = try? String(contentsOfFile: file).replacingOccurrences(of: "\n", with: "") else {
             print(#function, #line, "Error")
-            return .failure(NSError(domain: "Developer-edge-License Error", code: 500))
+            return .failure(NSError(domain: "Developer-mimOE-License Error", code: 500))
         }
         
-        // License parameter is the only parameter required for edgeEngine Runtime startup. There are other optional parameters also available.
+        // License parameter is the only parameter required for mimOE Runtime startup. There are other optional parameters also available.
         let params = EdgeClient.StartupParameters(license: license)
         
-        // Using the mimik Client Library to start the edgeEngine Runtime
+        // Using the mimik Client Library to start the mimOE Runtime
         switch await self.edgeClient.startEdgeEngine(parameters: params) {
         case .success:
             print(#function, #line, "Success")
@@ -71,7 +71,7 @@ final class MainActivity: NSObject {
         // Calling mimik Client Library to generate the edgeEngine Access Token. Passing-in the Developer ID Token as a parameter.
         switch await self.edgeClient.authorizeDeveloper(developerIdToken: developerIdToken) {
         case .success(let authorization):
-                            
+            
             guard let accessToken = authorization.token?.accessToken else {
                 print(#function, #line, "Error")
                 return .failure(NSError(domain: "Access Token Error", code: 500))
@@ -87,7 +87,7 @@ final class MainActivity: NSObject {
     }
 
     // Asynchronous method returning the success or failure of deploying an edge microservice
-    func deployRandomNumberMicroservice(edgeEngineAccessToken: String) async -> Result<EdgeClient.Microservice, NSError> {
+    func deployMicroservice(accessToken: String) async -> Result<EdgeClient.Microservice, NSError> {
 
         // Establishing application's bundle reference to the randomnumber_v1.tar file
         guard let imageTarPath = Bundle.main.path(forResource: "randomnumber_v1", ofType: "tar") else {
@@ -99,7 +99,7 @@ final class MainActivity: NSObject {
         let config = EdgeClient.Microservice.Config(imageName: "randomnumber-v1", containerName: "randomnumber-v1", basePath: "/randomnumber/v1", envVariables: [:])
         
         // Using the mimik Client Library method to deploy the edge microservice
-        switch await self.edgeClient.deployMicroservice(edgeEngineAccessToken: edgeEngineAccessToken, config: config, imageTarPath: imageTarPath) {
+        switch await self.edgeClient.deployMicroservice(edgeEngineAccessToken: accessToken, config: config, imageTarPath: imageTarPath) {
         case .success(let microservice):
             print(#function, #line, "Success", microservice)
             return .success(microservice)
@@ -120,10 +120,11 @@ final class MainActivity: NSObject {
         }
         
         // Getting a reference to the deployed edge microservice
-        guard case let .success(microservices) = await self.edgeClient.deployedMicroservices(edgeEngineAccessToken: edgeEngineAccessToken), let microservice = microservices.first else {
+        guard case let .success(microservice) = await
+                self.edgeClient.microservice(containerName: "randomnumber-v1", edgeEngineAccessToken: edgeEngineAccessToken) else {
             print(#function, #line, "Error")
             return .failure(NSError(domain: "Deployment Error", code: 500))
-        }
+        } // 15
         
         // Establishing the edge microservice endpoint full path URL
         guard let endpointUrlComponents = microservice.fullPathUrl(withEndpoint: "/randomNumber"), let endpointUrl = endpointUrlComponents.url else {
