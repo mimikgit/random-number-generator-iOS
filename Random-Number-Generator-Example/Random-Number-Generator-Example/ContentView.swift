@@ -13,13 +13,15 @@ struct ContentView: View {
             
             Button.init("GET RANDOM NUMBER") {
                 
+                // Wrapping around the asynchronous call with Task
                 Task {
-                    // Calling the repaired asynchronous method
+                    // Calling the new asynchronous generateRandomNumberNew method
                     guard case let .success(generatedNumber) = await mainActivity.generateRandomNumberNew() else {
+                        // We don't have the random number, just returning then
                         return
                     }
                     
-                    // Setting the view's new random number
+                    // We have a new random number, so we'll set the view's UI with the new value
                     randomNumber = generatedNumber
                 }
                 
