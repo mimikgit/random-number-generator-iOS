@@ -15,11 +15,9 @@
 		319ECA72270BA59A00A5E19C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 319ECA71270BA59A00A5E19C /* Preview Assets.xcassets */; };
 		31DCC23C270F881900CBFC6F /* MainActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31DCC23B270F881900CBFC6F /* MainActivity.swift */; };
 		31F9D82F2717841900FB34FA /* randomnumber_v1.tar in Resources */ = {isa = PBXBuildFile; fileRef = 31F9D82E2717841900FB34FA /* randomnumber_v1.tar */; };
-		5D78DAFF79993F56F4ACA87C /* Pods_Random_Number_Generator_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2106D95720D78C656D02C5 /* Pods_Random_Number_Generator_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0D2106D95720D78C656D02C5 /* Pods_Random_Number_Generator_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Random_Number_Generator_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		317D0F712C0501EA0035611B /* Developer-mim-OE-License */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Developer-mim-OE-License"; sourceTree = SOURCE_ROOT; };
 		31817D12270F788E00962DDE /* Developer-ID-Token */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Developer-ID-Token"; sourceTree = SOURCE_ROOT; };
 		319ECA67270BA59900A5E19C /* Random-Number-Generator-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Random-Number-Generator-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -29,8 +27,6 @@
 		319ECA71270BA59A00A5E19C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		31DCC23B270F881900CBFC6F /* MainActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainActivity.swift; sourceTree = "<group>"; };
 		31F9D82E2717841900FB34FA /* randomnumber_v1.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = randomnumber_v1.tar; sourceTree = SOURCE_ROOT; };
-		91809A89FD1A0BD477E89E42 /* Pods-Random-Number-Generator-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Random-Number-Generator-Example.release.xcconfig"; path = "Target Support Files/Pods-Random-Number-Generator-Example/Pods-Random-Number-Generator-Example.release.xcconfig"; sourceTree = "<group>"; };
-		E850FDA9E3105439121D46D9 /* Pods-Random-Number-Generator-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Random-Number-Generator-Example.debug.xcconfig"; path = "Target Support Files/Pods-Random-Number-Generator-Example/Pods-Random-Number-Generator-Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,28 +34,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D78DAFF79993F56F4ACA87C /* Pods_Random_Number_Generator_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		12921CE6223F1E68E90E6FE9 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0D2106D95720D78C656D02C5 /* Pods_Random_Number_Generator_Example.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		319ECA5E270BA59900A5E19C = {
 			isa = PBXGroup;
 			children = (
 				319ECA69270BA59900A5E19C /* Random-Number-Generator-Example */,
 				319ECA68270BA59900A5E19C /* Products */,
-				417B0E58FA8F2C73FD0CD5DF /* Pods */,
-				12921CE6223F1E68E90E6FE9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,15 +79,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		417B0E58FA8F2C73FD0CD5DF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E850FDA9E3105439121D46D9 /* Pods-Random-Number-Generator-Example.debug.xcconfig */,
-				91809A89FD1A0BD477E89E42 /* Pods-Random-Number-Generator-Example.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -110,11 +86,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 319ECA75270BA59A00A5E19C /* Build configuration list for PBXNativeTarget "Random-Number-Generator-Example" */;
 			buildPhases = (
-				E8AEA2D94738641CA280AECF /* [CP] Check Pods Manifest.lock */,
 				319ECA63270BA59900A5E19C /* Sources */,
 				319ECA64270BA59900A5E19C /* Frameworks */,
 				319ECA65270BA59900A5E19C /* Resources */,
-				E937672286EE66FBC9AE2428 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -172,48 +146,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		E8AEA2D94738641CA280AECF /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Random-Number-Generator-Example-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E937672286EE66FBC9AE2428 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Random-Number-Generator-Example/Pods-Random-Number-Generator-Example-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Random-Number-Generator-Example/Pods-Random-Number-Generator-Example-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Random-Number-Generator-Example/Pods-Random-Number-Generator-Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		319ECA63270BA59900A5E19C /* Sources */ = {
@@ -296,7 +228,6 @@
 		};
 		319ECA76270BA59A00A5E19C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E850FDA9E3105439121D46D9 /* Pods-Random-Number-Generator-Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -304,6 +235,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Random-Number-Generator-Example/Preview Content\"";
 				DEVELOPMENT_TEAM = GL288K3PB5;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -323,7 +258,6 @@
 		};
 		319ECA77270BA59A00A5E19C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 91809A89FD1A0BD477E89E42 /* Pods-Random-Number-Generator-Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -331,6 +265,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Random-Number-Generator-Example/Preview Content\"";
 				DEVELOPMENT_TEAM = GL288K3PB5;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
