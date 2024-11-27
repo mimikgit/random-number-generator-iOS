@@ -9,7 +9,7 @@ final class MainActivity: NSObject {
         super.init()
         
         Task {
-            // Starting mimOE Runtime.
+            // Starting mim OE Runtime.
             guard case .success = await self.start() else {
                 return
             }
@@ -40,23 +40,23 @@ final class MainActivity: NSObject {
     func start() async -> Result<Void, NSError> {
         
         // Loading the content of the Developer-mimOE-License file as a String
-        guard let file = Bundle.main.path(forResource: "Developer-mimOE-License", ofType: nil), let license = try? String(contentsOfFile: file).replacingOccurrences(of: "\n", with: "") else {
+        guard let file = Bundle.main.path(forResource: "Developer-mim-OE-License", ofType: nil), let license = try? String(contentsOfFile: file).replacingOccurrences(of: "\n", with: "") else {
             print(#function, #line, "Error")
-            return .failure(NSError(domain: "Developer-mimOE-License Error", code: 500))
+            return .failure(NSError(domain: "Developer-mim-OE-License Error", code: 500))
         }
         
-        // License parameter is the only parameter required for mimOE Runtime startup. There are other optional parameters also available.
+        // License parameter is the only parameter required for mim OE Runtime startup. There are other optional parameters also available.
         let params = EdgeClient.StartupParameters(license: license)
         
-        // Using the mimik Client Library to start the mimOE Runtime
+        // Using the mimik Client Library to start the mim OE Runtime
         switch await self.edgeClient.startEdgeEngine(parameters: params) {
         case .success:
             print(#function, #line, "Success")
-            // Returning a success for mimOE startup
+            // Returning a success for mim OE startup
             return .success(())
         case .failure(let error):
             print(#function, #line, "Error", error.localizedDescription)
-            // Returning a failure for mimOE startup
+            // Returning a failure for mim OE startup
             return .failure(error)
         }
     }
@@ -70,7 +70,7 @@ final class MainActivity: NSObject {
             return .failure(NSError(domain: "Developer-ID-Token Error", code: 500))
         }
         
-        // Calling mimik Client Library to generate the mimOE Access Token. Passing-in the Developer ID Token as the only parameter.
+        // Calling mimik Client Library to generate the Access Token. Passing-in the Developer ID Token as the only parameter.
         switch await self.edgeClient.authorizeDeveloper(developerIdToken: developerIdToken) {
         case .success(let authorization):
             
@@ -120,7 +120,7 @@ final class MainActivity: NSObject {
     func generateRandomNumberNew() async -> Result<Int, NSError> {
         
         // Getting the Access Token ready
-        guard case let .success(edgeEngineAccessToken) = await self.accessToken() else {
+        guard case let .success(accessToken) = await self.accessToken() else {
             print(#function, #line, "Error")
             // We don't have the Access Token, returning a failure.
             return .failure(NSError(domain: "Access Token Error", code: 500))
@@ -128,14 +128,14 @@ final class MainActivity: NSObject {
         
         // Getting a reference to the deployed edge microservice
         guard case let .success(microservice) = await
-                self.edgeClient.microservice(containerName: "randomnumber-v1", edgeEngineAccessToken: edgeEngineAccessToken) else {
+                self.edgeClient.microservice(containerName: "randomnumber-v1", edgeEngineAccessToken: accessToken) else {
             print(#function, #line, "Error")
             // We don't have the reference, returning a failure.
             return .failure(NSError(domain: "Deployment Error", code: 500))
         }
         
         // Establishing the full path url to edge microservice's /randomNumber endpoint
-        guard let endpointUrlComponents = microservice.fullPathUrl(withEndpoint: "/randomNumber"), let endpointUrl = endpointUrlComponents.url else {
+        guard let endpointUrlComponents = microservice.urlComponents(withEndpoint: "/randomNumber"), let endpointUrl = endpointUrlComponents.url else {
             print(#function, #line, "Error")
             // We don't have the url, returning a failure.
             return .failure(NSError(domain: "Microservice Error", code: 500))
