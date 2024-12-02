@@ -33,7 +33,7 @@ Also, be advised that the example application source that you'll clone from GitH
 
 # Prerequisites
 
-Connecting a **real iOS device** to the Mac computer and selecting it as the target in Xcode later on, when the project opens. This example application will not work with an iOS Simulator.
+You will need to attach a **real iOS device** to your development Mac and select it as the build target. This example will not work with the iOS simulator.
 
 |**NOTE:** <br/><br/>Working with the iOS Simulator and the mimik Client Libraries entails some special consideration. For more more information about iOS Simulator support see [this tutorial](https://devdocs.mimik.com/tutorials/01-submenu/02-submenu/03-index).|
 |----------|
@@ -102,13 +102,6 @@ Once copied, paste the mim OE License into the `Developer-mim-OE-License` file, 
 open Random-Number-Generator-Example.xcworkspace
 ```
 
-Figure 1 below shows the command line instructions described previously, from `Steps 1-5`.
-
-| ![code in Xcode](../../../images/tutorials/iOS-01/iOS-command-line-output.png) |
-|-----|
-|**Figure 1:**  Command line output example for `Steps 1-5`|
-
-
 Now that references and configurations have been set, it's time to get into the business of programming to the microservice at the edge.
 
 
@@ -116,17 +109,12 @@ Now that references and configurations have been set, it's time to get into the 
 
 As mentioned at the beginning of this tutorial, our objective is to fix a bug that is preventing the example application from displaying a random number when a button is tapped on the screen of the iOS device as seen in Figure 2 below.
 
-| ![iOS-buggy-behaviour](../../../images/tutorials/iOS-01/iOS-buggy-behaviour.png)|
+| ![iOS-buggy-behaviour](images/iOS-buggy-behaviour.png)|
 |----|
 |**Figure 2:** Buggy behaviour! A static value of 60 is being returned instead of a random number|
 
 
-The bad behaviour we need to fix is in the `MainActivity.swift` file as seen in the XCode IDE in Figure 3 below.
-
-| ![iOS-Xcode-project](../../../images/tutorials/iOS-01/iOS-Xcode-project.png)|
-|----|
-|**Figure 3:** Shows a version of the faulty code within the XCode IDE.|
-Notice that the code returns a hard-coded value of 60 in the `generateRandomNumber()` method at `Line 16`. This is the root cause. We're going to make the fix by using a microservice at the edge instead, as we discussed earlier.
+The bad behaviour we need to fix is in the `MainActivity.swift` file.
 
 
 # Implementing the Fix
@@ -519,21 +507,11 @@ If you encounter any issues getting your code to run, don't worry—you can alwa
 * Attaching and selecting a **real iOS device** as the target. This won't work with the iOS simulator.
 * Runing the code on the attached iOS device.
 
-| ![after-deployment](../../../images/tutorials/iOS-01/iOS-random-number-working.png)|
+| ![after-deployment](images/iOS-random-number-working.png)|
 |----|
 |**Figure 4:** The example application with the working randomization code from the  microservice at the edge |
 
 **Congratulations!** You have completed the example application tutorial that uses a microservice at the edge to provide behaviour to fix the operational bug in an application. Remember, the application was unable to display a random number each time the **Get Random Number** button was tapped. Now by binding the button tap handler to make a call to the edge microservice, it does.
-
-# Additional reading
-
-In order to get more out of this article, the reader could further familiarize themselves with the following concepts and techniques:
-
-- [Understanding the mimik Client Library for iOS](https://devdocs.mimik.com/key-concepts/10-index).
-- [Creating a Simple iOS Application that Uses an edge microservice](https://devdocs.mimik.com/tutorials/01-submenu/02-submenu/01-index).
-- [Integrating the mimik Client Library into an iOS project](https://devdocs.mimik.com/tutorials/01-submenu/02-submenu/02-index).
-- [Working with mim OE in an iOS project](https://devdocs.mimik.com/tutorials/01-submenu/02-submenu/03-index).
-- [Working with edge microservices in an iOS project](https://devdocs.mimik.com/tutorials/01-submenu/02-submenu/04-index).
 
 
 # Review
@@ -545,3 +523,13 @@ In this document, you learned the following:
 - How to use a Developer ID Token to authorize a mim OE Runtime and generate an Access Token for it
 - How to use a generated Access Token to deploy a microservice at the edge
 - How to make a request to a microservice at the edge to retrieve a random value
+
+# Additional reading
+
+In order to get more out of this article, the reader could further familiarize themselves with the following concepts and techniques:
+
+- [Understanding the mimik Client Library for iOS](/key-concepts/10-index).
+- [Creating a Simple iOS Application that Uses an edge microservice](/tutorials/01-submenu/02-submenu/01-index).
+- [Integrating the mimik Client Library into an iOS project](/tutorials/01-submenu/02-submenu/02-index).
+- [Working with edge microservices in an iOS project](/tutorials/01-submenu/02-submenu/04-index).
+- [Working with AI language models in an iOS project](/tutorials/02-submenu/02-submenu/01-index).
