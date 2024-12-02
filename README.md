@@ -27,15 +27,15 @@ In terms of doing the actual programming, after we've identified the problem are
 
 Then, after the configuration is complete, we'll execute three phases of coding to do the work of actually getting the edge microservice up and running. The coding will take place in `MainActivity.swift` and `ContentView.swift` files.
 
-In the first phase, we stub out the methods that relate to each programming step. Then, in the second phase, we'll add code to the methods in an isolated manner within the tutorial so that you can learn the reasoning and details about each function. Finally, we'll display the completed `MainActivity.swift` and `ContentView.swift` files that have all the code for all the methods. At that point, you'll be able to run the fixed code on an iOS Device.
+In the first phase, we stub out the methods that relate to each programming step. Then, in the second phase, we'll add code to the methods in an isolated manner within the tutorial so that you can learn the reasoning and details about each function. Finally, we'll display the completed `MainActivity.swift` and `ContentView.swift` files that have all the code for all the methods. At that point, you'll be able to run the fixed code on your device.
 
-Also, be advised that the example application source that you'll clone from GitHub has a branch named `completed_code`. This branch contains a version of the iOS application that has all the code you will be adding throughout the tutorial. You can checkout this branch on your local machine and run that code, should you experience difficulties running the code you've developed.
+Also, be advised that the example application source that you'll clone from GitHub has a branch named `completed_code`. This branch contains a version of the iOS application that has all the code you will be adding throughout the tutorial. More details [here](#viewingthecompletedcode).
 
 # Prerequisites
 
-Connecting a **real iOS device** to the Mac computer and selecting it as the target in Xcode later on, when the project opens. This example application will not work with an iOS Simulator.
+- Attaching a **real iOS device** to the development Mac and selecting it as the build target. This won't work with the iOS simulator.
 
-|**NOTE:** <br/><br/>Working with the iOS Simulator and the mimik Client Libraries entails some special consideration. For more more information about iOS Simulator support see [this tutorial](https://devdocs.mimik.com/tutorials/01-submenu/02-submenu/03-index).|
+|**NOTE:** <br/><br/>Working with the iOS Simulator and the mimik Client Libraries entails some special consideration. For more more information about iOS Simulator support see [this tutorial](https://devdocs.mimik.com/tutorials/01-submenu/02-submenu/03-index#workingwithaniossimulator).|
 |----------|
 
 # Working with the Example Application and the mimik Client Library
@@ -48,25 +48,23 @@ As mentioned above, you'll be modifying an existing iOS application to fix a bug
 
 The place to start is cloning the code from GitHub and loading it into Xcode.
 
-Execute the following command to clone the example code from GitHub:
-
 ```
 git clone https://github.com/mimikgit/random-number-generator-iOS.git
 ```
 
 # Adding the mimik Client Library cocoapods
 
-As mentioned above, the mimik Client Library comes in a form of [EdgeCore](https://github.com/mimikgit/cocoapod-EdgeCore) and [mim-OE-ai-SE-iOS-developer](https://github.com/mimikgit/cocoapod-mim-OE-ai-SE-iOS-developer) cocoapods, which need to be made available to the application source code.
+The mimik Client Library comes in a form of [EdgeCore](https://github.com/mimikgit/cocoapod-EdgeCore) and [mim-OE-ai-SE-iOS-developer](https://github.com/mimikgit/cocoapod-mim-OE-ai-SE-iOS-developer) cocoapods, which need to be made available to the application source code.
 
 We have setup these references in the `Podfile` file at the project level for you.
 
-**Step 1**:** From the command line run the following command to get to the Xcode project directory.
+**Step 1:** From the command line run the following command to get to the Xcode project directory.
 
 ```
-cd random-number-generator-iOS/Random-Number-Generator-Example/
+cd random-number-generator-iOS/Source/
 ```
 
-**Step 2**:** From the command line run the following command (from inside the Xcode project directory).
+**Step 2:** From the command line run the following command (from inside the Xcode project directory).
 
 ```
 pod install --repo-update
@@ -104,7 +102,7 @@ open Random-Number-Generator-Example.xcworkspace
 
 Figure 1 below shows the command line instructions described previously, from `Steps 1-5`.
 
-| ![code in Xcode](../../../images/tutorials/iOS-01/iOS-command-line-output.png) |
+| ![code in Xcode](images/iOS-command-line-output.png) |
 |-----|
 |**Figure 1:**  Command line output example for `Steps 1-5`|
 
@@ -116,16 +114,16 @@ Now that references and configurations have been set, it's time to get into the 
 
 As mentioned at the beginning of this tutorial, our objective is to fix a bug that is preventing the example application from displaying a random number when a button is tapped on the screen of the iOS device as seen in Figure 2 below.
 
-| ![iOS-buggy-behaviour](../../../images/tutorials/iOS-01/iOS-buggy-behaviour.png)|
+| ![iOS-buggy-behaviour](images/iOS-buggy-behaviour.png)|
 |----|
 |**Figure 2:** Buggy behaviour! A static value of 60 is being returned instead of a random number|
 
 
-The bad behaviour we need to fix is in the `MainActivity.swift` file as seen in the XCode IDE in Figure 3 below.
+The bad behaviour we need to fix is in the `MainActivity.swift` file as seen in the Xcode in Figure 3 below.
 
-| ![iOS-Xcode-project](../../../images/tutorials/iOS-01/iOS-Xcode-project.png)|
+| ![iOS-Xcode-project](images/iOS-Xcode-project.png)|
 |----|
-|**Figure 3:** Shows a version of the faulty code within the XCode IDE.|
+|**Figure 3:** Shows a version of the faulty code within the Xcode.|
 Notice that the code returns a hard-coded value of 60 in the `generateRandomNumber()` method at `Line 16`. This is the root cause. We're going to make the fix by using a microservice at the edge instead, as we discussed earlier.
 
 
@@ -139,14 +137,14 @@ In order to fix the application code we'll be doing the following in the `MainAc
 * Modifying the inserted Method Placeholders in MainActivity
 * Modifying the ContentView code to call the fixed method
 
-The mimik Client Library interface is represented in code as [EdgeClient](https://mimikgit.github.io/cocoapod-EdgeCore/documentation/edgecore/edgeclient) class, and we'll initialize its instance into a `let edgeClient` constant in one of the code examples below. 
+The mimik Client Library interface is represented in code as [EdgeClient](https://mimikgit.github.io/cocoapod-EdgeCore/documentation/edgecore/edgeclient) class. 
 
 
 # Creating an instance of the mimik Client Library components
 
 First, we need to import the relevant mimik Client Library modules in our MainActivity class by inserting the `import` statements as shown below.
 
-Then, in order to be able to start using the mimik Client Library interface we need to create its instance. We do this by establishing the `let edgeClient` constant in the `MainActivity.swift` file as shown below. `edgeClient` constant will be providing our code with the mimik Client Library interface access.
+Then, in order to be able to start using the mimik Client Library interface we need to create its instance. We do this by establishing the `let edgeClient` constant in the `MainActivity.swift` file. `edgeClient` constant will be providing our code with the mimik Client Library interface access.
 
 ```
 import Foundation
@@ -243,7 +241,7 @@ We want to make the deployed microservice at the edge available for the `Content
  
 The four added methods are marked with `async` as asynchronous. We'll encapsulate asynchronous actions with a `Task{}` code wrapper as shown below in the code for the `init()` method.
  
-First, the mim OE Runtime needs to be started as shown below on `Line 6`. Second, we need to generate the Access Token as shown below on `Line 11`. Third, the edge microservice needs to be deployed which is done at `Line 16`. 
+First, the mim OE Runtime needs to be started. Second, we need to generate the Access Token. Third, the edge microservice needs to be deployed. 
  
 The code below is commented on. Take a moment to review statements using the code comments as your guide. Then, if you're following along by doing live programming against the tutorial code you downloaded from GitHub, modify the `init()` method code in the `MainActivity.swift` file as shown below:
  
@@ -282,7 +280,7 @@ Take a moment to review the statements in the code below using the comments as y
 // Asynchronous method returning the success or failure of edgeEngine Runtime startup
 func start() async -> Result<Void, NSError> {
     
-    // Loading the content of the Developer-mimOE-License file as a String
+    // Loading the content of the Developer-mim-OE-License file as a String
     guard let file = Bundle.main.path(forResource: "Developer-mim-OE-License", ofType: nil), let license = try? String(contentsOfFile: file).replacingOccurrences(of: "\n", with: "") else {
         print(#function, #line, "Error")
         return .failure(NSError(domain: "Developer-mim-OE-License Error", code: 500))
@@ -510,16 +508,16 @@ If you've followed the tutorial and implemented the code as instructed, running 
 
 If you encounter any issues getting your code to run, don't worry—you can always refer to the working version of the code available in the cloned repository. This version is located in the `completed_code` branch. To run the completed code, follow the steps below:
 
-* `git checkout completed_code`
-* cd to the project directory where the `Podfile` file is.
-* `pod install --repo-update`
-* Saving your Developer ID Token to the `Developer-ID-Token` file.
-* Saving your mim OE (Edge) developer License to the `Developer-mim-OE-License` file. 
-* Opening the project **workspace** in Xcode.
-* Attaching and selecting a **real iOS device** as the target. This won't work with the iOS simulator.
-* Runing the code on the attached iOS device.
+* Create a new directory somewhere and `cd <new-directory>` to it.
+* Clone the repository again and switch the branch `git clone https://github.com/mimikgit/random-number-generator-iOS.git; cd random-number-generator-iOS; git checkout completed_code`
+* Switch to the Source directory and install cocoapods `cd Source; pod install --repo-update; ls -lea; open Developer-ID-Token; open Developer-mim-OE-License`
+* Save your Developer ID Token to the opened `Developer-ID-Token` file.
+* Save your mim OE (Edge) developer License to the opened `Developer-mim-OE-License` file. 
+* Open the project **workspace** in Xcode `open Random-Number-Generator-Example.xcworkspace`.
+* Attach a **real iOS device** to your Mac and select it as the build target. This won't work with the iOS simulator.
+* Run the completed code on the attached iOS device.
 
-| ![after-deployment](../../../images/tutorials/iOS-01/iOS-random-number-working.png)|
+| ![after-deployment](images/iOS-random-number-working.png)|
 |----|
 |**Figure 4:** The example application with the working randomization code from the  microservice at the edge |
 
